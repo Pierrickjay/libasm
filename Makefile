@@ -1,5 +1,6 @@
 NAME = libasm.a
 EXEC = libasmExec
+EXECBONUS = libasmExecBonus
 
 SRCS = $(addprefix ft_, $(addsuffix .s, \
 	strlen\
@@ -7,7 +8,9 @@ SRCS = $(addprefix ft_, $(addsuffix .s, \
 	strcmp\
 	write\
 	read\
-	strdup))
+	strdup\
+	list_size))
+
 OBJS = $(SRCS:%.s=srcs/.build/%.o)
 DEPS = $(SRCS:%.s=srcs/.build/%.d)
 
@@ -39,12 +42,17 @@ exec: $(NAME)
 run: exec
 	./$(EXEC)
 
+runbonus: $(NAME)
+	$(CC) $(CFLAGS) -Iincludes mainbonus.c -L. -lasm -o $(EXECBONUS)
+	./$(EXECBONUS)
+
 clean:
 	$(RM) -rf srcs/.build
 
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(EXEC)
+	$(RM) $(EXECBONUS)
 
 re: fclean all
 
