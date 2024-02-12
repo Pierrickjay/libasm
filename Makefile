@@ -42,7 +42,7 @@ exec: $(NAME)
 run: exec
 	./$(EXEC)
 
-runbonus: $(NAME)
+bonus: $(NAME)
 	$(CC) $(CFLAGS) -Iincludes mainbonus.c -L. -lasm -o $(EXECBONUS)
 	./$(EXECBONUS)
 

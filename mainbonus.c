@@ -16,9 +16,10 @@ int main()
 
 	printf("List size : %d\n", ft_list_size(&first));
 
-	t_list *head = &first;
+	t_list head;
+	head.next = &first;
 	// ft_list_push_front(&head, &data);
-	printf("size of the list after push_front: %d\n", ft_list_size(head));
+	printf("size of the list after adding an element %d\n", ft_list_size(&head));
 
     return (0);
 }
